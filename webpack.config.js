@@ -27,4 +27,29 @@ module.exports = {
       template: path.resolve(__dirname, './index.html')
     }),
   ],
+  optimization: {
+    usedExports: true,
+    runtimeChunk: {
+      name: 'runtime'
+    },
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 5,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          name: 'vendor'
+        },
+        default: {
+          minChunks: 1,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
 }

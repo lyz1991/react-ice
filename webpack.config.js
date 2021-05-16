@@ -16,6 +16,7 @@ module.exports = {
     ]
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: './',
     host: 'localhost',
     port: 3001,
@@ -24,7 +25,8 @@ module.exports = {
   plugins: [
     // make sure to include the plugin for the magic
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './index.html')
+      template: path.resolve(__dirname, './index.html'),
+      title: "融合通信"
     }),
   ],
   optimization: {
